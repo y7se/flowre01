@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+    <title>竞猜花名赢流量</title>
+    <link href="../css/common/layout.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="pop_module loading show" id="loading" style="background-color:#fff;">
+        <table>
+            <tr>
+                <td>
+                    <div class="progressBox">
+                        <div class="progress" id="progress">
+                            <i class="com_icon01"></i>
+                            <img src="../images/butterfly.png" alt="" class="butterfly">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <!-- 首页 Start -->
+    <div class="mainContainer page01" id="page01">
+        <!-- dataCon01 Start -->
+        <div class="dataCon01">
+            <!-- 开始按钮 Start -->
+            <a class="sprite_btn01" id="beginBtn"></a>
+            <!-- 开始按钮 End -->
+            <!-- 攻略按钮 Start -->
+            <a class="sprite_btn02" id="showPop01"></a>
+            <!-- 攻略按钮 End -->
+            <!-- 查奖抽奖 Start -->
+            <a href="#" class="sprite_txt01"></a>
+            <!-- 查奖抽奖 End -->
+        </div>
+        <!-- dataCon01 End -->
+    </div>
+    <!-- 首页 Start -->
+    <!-- 答题页 Start -->
+    <div class="mainContainer page02" id="page02" style="display:none;">
+        <!-- dataCon02 Start -->
+        <div class="dataCon02" id="dataCon02">
+            <div class="dataCon02_box">
+                <div v-for="(item, index) in items" v-bind:class="{'dataCon02_item':true,'show':(index==curShowItem)}">
+                    <div class="picBox">
+                        <img v-bind:src="item.imgUrl" alt="">
+                    </div>
+                    <div class="choice">
+                        <div v-bind:class="{'choice_item':true,'show':(item.question01.state=='show')}" v-bind:flag="item.question01.flag?'right':'wrong'" v-bind:index="index" v-on:click="choice01">
+                            A、{{item.question01.txt}}
+                            <i v-bind:class="[item.question01.flag?'sprite_icon_right':'sprite_icon_wrong']"></i>
+                        </div>
+                        <div v-bind:class="{'choice_item':true,'show':(item.question02.state=='show')}" v-bind:flag="item.question02.flag?'right':'wrong'" v-bind:index="index" v-on:click="choice02">
+                            B、{{item.question02.txt}}
+                            <i v-bind:class="[item.question02.flag?'sprite_icon_right':'sprite_icon_wrong']"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataCon02_foot">
+                    第<span>{{curShowItem+1}}</span>题 ，共<span>5</span>题
+                </div>
+            </div>
+            <!-- dataCon02 End -->
+        </div>
+        <!-- 答题页 End -->
+    </div>
+    <!-- 弹框-活动规则 Start -->
+    <div class="pop_module" id="popBox01">
+        <div class="com_pop_con pop_con01">
+            <div class="closeBtn closeBtn01"></div>
+            <div class="popBox01">
+                <div class="ruleList">
+                    <div class="item">
+                        1.活动时间：2018年4月17日--4月26日（具体上线
+                        时间待定）
+                    </div>
+                    <div class="item">
+                        2.参与方式：活动期间，关注并登录“中国移动100
+                        86”微信公众号的4G实名制客户，每天点
+                        击菜单【我的福利】—【XXXXX】进入活动页面开
+                        始答题，答题完毕后选择你最喜欢的花开始抽奖，
+                        有机会获得XXXXX流量，每个号码每天抽奖限额3
+                        次，且只可中奖一次。
+                    </div>
+                    <div class="item">
+                        4.活动奖品（中奖概率为0.02％-2％，具体以实际
+                        参与为准。 ）：
+                    </div>
+                    <div class="tabBox01">
+                        <table>
+                            <tr>
+                                <th>流量奖品</th>
+                                <th>份数</th>
+                            </tr>
+                            <tr>
+                                <td>奖品名称</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>奖品名称</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>奖品名称</td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框-活动规则 End -->
+    <!-- 弹框-没有流量 Start -->
+    <div class="pop_module">
+        <div class="com_pop_con pop_con02">
+            <div class="popBox02">
+                <div class="tabBox02">
+                    <div class="txt">
+                        昨夜闲潭梦落花，可惜<br/>流量不到家
+                    </div>
+                    <div class="txt" style="width:0;"></div>
+                </div>
+                <div class="btnCon">
+                    <a href="#" class="sprite_btn03 closeBtn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框-没有流量 End -->
+    <!-- 弹框-机会用完 Start -->
+    <div class="pop_module">
+        <div class="com_pop_con pop_con02">
+            <div class="popBox02">
+                <div class="tabBox02">
+                    <div class="txt">
+                        今日机会已用尽<br/>
+                        春暖花开，明日再来吧！
+                    </div>
+                    <div class="txt" style="width:0;"></div>
+                </div>
+                <div class="btnCon">
+                    <a href="#" class="sprite_btn04 closeBtn"></a>
+                    <a href="#" class="sprite_btn05"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框-机会用完 End -->
+    <!-- 弹框-活动结束未获奖 Start -->
+    <div class="pop_module">
+        <div class="com_pop_con pop_con02">
+            <div class="popBox02">
+                <div class="tabBox02">
+                    <div class="txt" style="font-size:32px;">
+                        最后一天，礼物迟迟未入袋？<br/>
+                        也许在其他地方等你！
+                    </div>
+                    <div class="txt" style="width:0;"></div>
+                </div>
+                <div class="btnCon">
+                    <a href="#" class="sprite_btn06 closeBtn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框-活动结束未获奖 End -->
+    <!-- 弹框-答题抽奖提示 Start -->
+    <div class="pop_module">
+        <div class="com_pop_con pop_con02">
+            <div class="popBox02">
+                <div class="tabBox02">
+                    <div class="txt" style="font-size:32px;">
+                        春风桃李花开日，奖品<br/>到手更待何时！
+                    </div>
+                    <div class="txt" style="width:0;"></div>
+                </div>
+                <div class="btnCon">
+                    <a href="#" class="sprite_btn07 closeBtn"></a>
+                    <a href="#" class="sprite_btn08"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框-答题抽奖提示 End -->
+    <!-- 弹框-未答题 Start -->
+    <div class="pop_module">
+        <div class="com_pop_con pop_con02">
+            <div class="popBox02">
+                <div class="tabBox02">
+                    <div class="txt" style="font-size:32px;">
+                        您还未答题，<br/>
+                        未获得抽奖资格哦～
+                    </div>
+                    <div class="txt" style="width:0;"></div>
+                </div>
+                <div class="btnCon">
+                    <a href="#" class="sprite_btn07 closeBtn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框-未答题 End -->
+    <!-- 弹框-三次机会已用完 Start -->
+    <div class="pop_module">
+        <div class="com_pop_con pop_con02">
+            <div class="closeBtn closeBtn01"></div>
+            <div class="popBox02">
+                <div class="tabBox02">
+                    <div class="txt" style="font-size:32px;">
+                        今天3次机会已用完，<br/>
+                        不如看看别处风光！
+                    </div>
+                    <div class="txt" style="width:0;"></div>
+                </div>
+                <div class="btnCon">
+                    <a href="#" class="sprite_btn09 closeBtn"></a>
+                    <a href="#" class="sprite_btn10"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框-三次机会已用完 End -->
+    <!-- 浮层-禁止页面操作 Start -->
+    <div class="pop_module" id="stopPop" style="background-color:transparent;">
+    </div>
+    <!-- 浮层-禁止页面操作 Start -->
+    <script src="../js/vendor.bundle.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>
